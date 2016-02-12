@@ -16,10 +16,17 @@ public class LevelSelectionScript : MonoBehaviour {
 			newLevel.transform.parent = GridOfLevels.transform;
 			newLevel.GetComponentsInChildren<Text> ()[0].text = "Level "+level;
 			newLevel.name = "Level" + level;
+			newLevel.GetComponent<Button> ().onClick.AddListener (delegate { // Add On Click Event
+				levelClicked(level);
+			});
 		}
 	}
 	
 	public void backClicked() {
 		Application.LoadLevel("HomeScene");
+	}
+
+	public void levelClicked(int level) {
+		Application.LoadLevel("GameScene");
 	}
 }
