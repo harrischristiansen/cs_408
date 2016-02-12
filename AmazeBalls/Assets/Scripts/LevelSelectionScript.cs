@@ -27,6 +27,8 @@ public class LevelSelectionScript : MonoBehaviour {
 	}
 
 	public void levelClicked(int level) {
+		// TODO: Load Correct Level
+
 		Application.LoadLevel("GameScene");
 	}
 }
