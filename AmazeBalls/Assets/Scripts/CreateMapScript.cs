@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class CreateMapScript : MonoBehaviour {
@@ -9,6 +10,6 @@ public class CreateMapScript : MonoBehaviour {
 	}
 	
 	public void backClicked() {
-		Application.LoadLevel("HomeScene");
+		SceneManager.LoadScene (SceneManager.GetSceneByName("HomeScene").buildIndex);
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class HomeScript : MonoBehaviour {
@@ -9,20 +10,20 @@ public class HomeScript : MonoBehaviour {
 	}
 
 	public void playClicked() {
-		Application.LoadLevel("LevelsScene");
+		SceneManager.LoadScene (SceneManager.GetSceneByName("LevelsScene").buildIndex);
 	}
 
 	public void createClicked() {
-		Application.LoadLevel("CreateScene");
+		SceneManager.LoadScene (SceneManager.GetSceneByName("CreateScene").buildIndex);
 	}
 
 	public void scoresClicked() {
-		Application.LoadLevel("HighScoresScene");
+		SceneManager.LoadScene (SceneManager.GetSceneByName("HighScoresScene").buildIndex);
 	}
 	
 	public void logoutClicked() {
 		// TODO: Perform Logout Action
 
-		Application.LoadLevel("LoginScene");
+		SceneManager.LoadScene (SceneManager.GetSceneByName("LoginScene").buildIndex);
 	}
 }

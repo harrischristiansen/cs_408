@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LoginRegisterScript : MonoBehaviour {
@@ -24,13 +25,13 @@ public class LoginRegisterScript : MonoBehaviour {
 		// TODO: Login Validation/Check
 
 		Debug.Log("Login Clicked: "+username+", "+password);
-		Application.LoadLevel("HomeScene");
+		SceneManager.LoadScene (SceneManager.GetSceneByName("HomeScene").buildIndex);
 	}
 
 	public void registerClicked() {
 		// TODO: Register Submission/Validation
 
 		Debug.Log("Register Clicked: "+username+", "+password);
-		Application.LoadLevel("HomeScene");
+		SceneManager.LoadScene (SceneManager.GetSceneByName("HomeScene").buildIndex);
 	}
 }

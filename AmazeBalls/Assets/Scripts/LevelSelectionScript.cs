@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LevelSelectionScript : MonoBehaviour {
@@ -23,12 +24,12 @@ public class LevelSelectionScript : MonoBehaviour {
 	}
 	
 	public void backClicked() {
-		Application.LoadLevel("HomeScene");
+		SceneManager.LoadScene (SceneManager.GetSceneByName("HomeScene").buildIndex);
 	}
 
 	public void levelClicked(int level) {
 		// TODO: Load Correct Level
 
-		Application.LoadLevel("GameScene");
+		SceneManager.LoadScene (SceneManager.GetSceneByName("HomeScene").buildIndex);
 	}
 }
