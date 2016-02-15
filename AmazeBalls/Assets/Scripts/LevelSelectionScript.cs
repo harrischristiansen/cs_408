@@ -24,12 +24,12 @@ public class LevelSelectionScript : MonoBehaviour {
 	}
 	
 	public void backClicked() {
-		SceneManager.LoadScene (SceneManager.GetSceneByName("HomeScene").buildIndex);
+		SceneManager.LoadScene("HomeScene");
 	}
 
 	public void levelClicked(int level) {
 		// TODO: Load Correct Level
 
-		SceneManager.LoadScene (SceneManager.GetSceneByName("HomeScene").buildIndex);
+		SceneManager.LoadScene("GameScene");
 	}
 }

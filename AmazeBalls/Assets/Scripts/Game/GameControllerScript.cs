@@ -10,8 +10,8 @@ public class GameControllerScript : MonoBehaviour {
 	}
 	
 	public void pauseClicked() {
-		// TODO: Add Paused Window
+		// TODO: Add Paused Panel
 
-		SceneManager.LoadScene (SceneManager.GetSceneByName("HomeScene").buildIndex);
+		SceneManager.LoadScene ("HomeScene");
 	}
 }

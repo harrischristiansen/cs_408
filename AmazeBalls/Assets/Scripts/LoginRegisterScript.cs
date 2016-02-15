@@ -25,13 +25,13 @@ public class LoginRegisterScript : MonoBehaviour {
 		// TODO: Login Validation/Check
 
 		Debug.Log("Login Clicked: "+username+", "+password);
-		SceneManager.LoadScene (SceneManager.GetSceneByName("HomeScene").buildIndex);
+		SceneManager.LoadScene("HomeScene");
 	}
 
 	public void registerClicked() {
 		// TODO: Register Submission/Validation
 
 		Debug.Log("Register Clicked: "+username+", "+password);
-		SceneManager.LoadScene (SceneManager.GetSceneByName("HomeScene").buildIndex);
+		SceneManager.LoadScene("HomeScene");
 	}
 }

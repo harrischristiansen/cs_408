@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CreateMapScript.cs" />
      <Compile Include="Assets\Scripts\Game\GameControllerScript.cs" />
+     <Compile Include="Assets\Scripts\Game\GoalController.cs" />
      <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
      <Compile Include="Assets\Scripts\HomeScript.cs" />
      <Compile Include="Assets\Scripts\LevelSelectionScript.cs" />

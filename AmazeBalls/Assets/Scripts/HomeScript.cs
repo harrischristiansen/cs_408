@@ -10,20 +10,20 @@ public class HomeScript : MonoBehaviour {
 	}
 
 	public void playClicked() {
-		SceneManager.LoadScene (SceneManager.GetSceneByName("LevelsScene").buildIndex);
+		SceneManager.LoadScene("LevelsScene");
 	}
 
 	public void createClicked() {
-		SceneManager.LoadScene (SceneManager.GetSceneByName("CreateScene").buildIndex);
+		SceneManager.LoadScene("CreateScene");
 	}
 
 	public void scoresClicked() {
-		SceneManager.LoadScene (SceneManager.GetSceneByName("HighScoresScene").buildIndex);
+		SceneManager.LoadScene("HighScoresScene");
 	}
 	
 	public void logoutClicked() {
 		// TODO: Perform Logout Action
 
-		SceneManager.LoadScene (SceneManager.GetSceneByName("LoginScene").buildIndex);
+		SceneManager.LoadScene("LoginScene");
 	}
 }

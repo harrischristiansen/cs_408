@@ -10,6 +10,6 @@ public class CreateMapScript : MonoBehaviour {
 	}
 	
 	public void backClicked() {
-		SceneManager.LoadScene (SceneManager.GetSceneByName("HomeScene").buildIndex);
+		SceneManager.LoadScene("HomeScene");
 	}
 }
