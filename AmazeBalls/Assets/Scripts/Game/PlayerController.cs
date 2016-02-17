@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		if(col.gameObject.tag == "ElasticCollider") {
+		if(col.gameObject.tag == "Wall") {
 			Vector3 N = col.contacts[0].normal;
 			Vector3 V = velocity.normalized;
 			Vector3 R = Vector3.Reflect(V, N).normalized;
