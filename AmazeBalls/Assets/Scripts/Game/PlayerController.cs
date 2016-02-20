@@ -37,5 +37,6 @@ public class PlayerController : MonoBehaviour {
 			Vector3 R = Vector3.Reflect(V, N).normalized;
 			playerRigidbody.velocity = new Vector2(R.x, R.y) * velocity.magnitude * speed * 2;
 		}
+        
 	}
 }
