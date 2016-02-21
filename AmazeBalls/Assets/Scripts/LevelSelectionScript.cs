@@ -14,7 +14,7 @@ public class LevelSelectionScript : MonoBehaviour {
 		int[] levels = new int[7] {1, 2, 3, 4, 5, 6, 7};
 		foreach (int level in levels) {
 			GameObject newLevel = Instantiate (LevelPrefab);
-			newLevel.transform.parent = GridOfLevels.transform;
+			newLevel.transform.SetParent(GridOfLevels.transform);
 			newLevel.GetComponentsInChildren<Text> ()[0].text = "Level "+level;
 			newLevel.name = "Level" + level;
 			newLevel.GetComponent<Button> ().onClick.AddListener (delegate { // Add On Click Event
