@@ -25,12 +25,12 @@ public class PlayerShootScript : MonoBehaviour {
 			col.gameObject.transform.position = gameObject.transform.position;
 
 			// Show Aiming UI
-			GameControllerScript.FireMenu.SetActive(true);
+			GameControllerScript.GameController.FireMenu.SetActive(true);
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D col) {
-		GameControllerScript.FireMenu.SetActive(false);
+		GameControllerScript.GameController.FireMenu.SetActive(false);
 		if(consumeOnUse) {
 			Destroy(gameObject);
 		}

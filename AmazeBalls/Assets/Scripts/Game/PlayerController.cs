@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour {
 	public float fireSpeed = 8000;
 	public bool movementEnabled = true;
 
+	public static int currentBounceCount = -1; // Score Keeping
+	public static string resultText = "";
+	public static bool didWin = false;
+
 	// Velocity Tracking - For Elastic Collisions
 	private Vector2 velocity;
 	private Vector2 lastPos;
@@ -24,6 +28,10 @@ public class PlayerController : MonoBehaviour {
 	void Start() {
 		playerRigidbody = GetComponent<Rigidbody2D>();
 		directionArrow.SetActive(false);
+
+		currentBounceCount = -1; // Starts -1 so first StartShoot does not impact
+		resultText = "";
+		didWin = false;
 	}
 
 	void FixedUpdate() {
@@ -55,10 +63,14 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		if(col.gameObject.tag == "Wall") { // Collisions with walls
+			// "Bounce" Off Wall
 			Vector3 N = col.contacts[0].normal;
 			Vector3 V = velocity.normalized;
 			Vector3 R = Vector3.Reflect(V, N).normalized;
 			playerRigidbody.velocity = new Vector2(R.x, R.y) * velocity.magnitude * manualSpeed * 2;
+
+			// Increment Bounce Count
+			currentBounceCount++;
 		}
 	}
 
@@ -66,6 +78,9 @@ public class PlayerController : MonoBehaviour {
 		directionArrow.SetActive(true);
 		currentRotation = 0.0f;
 		playerRigidbody.MoveRotation(0.0f);
+
+		// Increment Bounce Count
+		currentBounceCount++;
 	}
 
 	public void playerShootRotateLeft() {
@@ -95,7 +110,7 @@ public class PlayerController : MonoBehaviour {
 			Debug.Log("Fire!");
 		}
 		directionArrow.SetActive(false);
-		GameControllerScript.FireMenu.SetActive(false);
+		GameControllerScript.GameController.FireMenu.SetActive(false);
 		movementEnabled = true;
 		playerRigidbody.AddForce(transform.up * fireSpeed);
 	}

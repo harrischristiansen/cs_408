@@ -14,6 +14,9 @@ public class GoalController : MonoBehaviour {
 			if(GameControllerScript.debugEnabled) {
 				Debug.Log("Player Won!");
 			}
+
+			PlayerController.didWin = true;
+			PlayerController.resultText = "You Won!";
 			GameControllerScript.GameController.pauseClicked();
 			col.gameObject.GetComponent<PlayerController>().movementEnabled = false;
 			Destroy(gameObject);

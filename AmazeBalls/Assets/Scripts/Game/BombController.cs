@@ -22,6 +22,7 @@ public class BombController : MonoBehaviour {
 			if(GameControllerScript.debugEnabled) {
 				Debug.Log("Bomb Hit!");
 			}
+			PlayerController.resultText = "You Lost!";
 			GameControllerScript.GameController.pauseClicked();
             Destroy(col.gameObject);
         }
