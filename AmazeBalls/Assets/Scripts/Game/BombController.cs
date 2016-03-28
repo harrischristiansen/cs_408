@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/*
+-- A-Maze-Balls: Purdue CS 408
+-- https://github.com/EvanDWalsh/CS-408
+-- Spring 2016
+*/
+
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
@@ -13,8 +19,10 @@ public class BombController : MonoBehaviour {
         {
             anim = GetComponent<Animator>();
             anim.SetTrigger("Explode");
-            Debug.Log("You Lose!");
-            GameObject.Find("GameControllerScriptManager").GetComponent<GameControllerScript>().pauseClicked();
+			if(GameControllerScript.debugEnabled) {
+				Debug.Log("Bomb Hit!");
+			}
+			GameControllerScript.GameController.pauseClicked();
             Destroy(col.gameObject);
         }
     }
