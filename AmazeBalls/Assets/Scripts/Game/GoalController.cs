@@ -11,8 +11,9 @@ using System.Collections;
 public class GoalController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col) {
 		if(col.gameObject.tag == "Player") {
+			LevelSelectionScript.unlockLevel(GameControllerScript.currentLevel);
 			if(GameControllerScript.debugEnabled) {
-				Debug.Log("Player Won!");
+				Debug.Log("Player Won! Unlocked: "+GameControllerScript.currentLevel);
 			}
 
 			PlayerController.didWin = true;

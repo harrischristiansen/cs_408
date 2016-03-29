@@ -24,7 +24,7 @@ public class BombController : MonoBehaviour {
 			}
 			PlayerController.resultText = "You Lost!";
 			GameControllerScript.GameController.pauseClicked();
-            Destroy(col.gameObject);
+            Destroy(col.gameObject); // Destroy Player
         }
     }
 }

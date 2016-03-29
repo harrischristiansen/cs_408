@@ -10,21 +10,42 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LevelSelectionScript : MonoBehaviour {
+	public static int levelsUnlocked = 0;
 
+	public static void unlockLevel(int level) {
+		level++; // 0 indexed to 1 indexed
+		if(levelsUnlocked < level) {
+			levelsUnlocked = level;
+			PlayerPrefs.SetInt("levelsUnlocked",levelsUnlocked);
+			PlayerPrefs.Save(); // Save LevelsUnlocked
+		}
+	}
+
+	public static void resetUnlocked() {
+		levelsUnlocked = 0;
+		PlayerPrefs.SetInt("levelsUnlocked",levelsUnlocked);
+		PlayerPrefs.Save(); // Save LevelsUnlocked
+	}
+
+	public int numLevels = 2;
 	public GameObject GridOfLevels;
 	public GameObject LevelPrefab;
 
-	// Use this for initialization
 	void Start () {
-		// TODO: Load Levels
-		int[] levels = new int[7] {1, 2, 3, 4, 5, 6, 7};
-		foreach (int level in levels) {
+		levelsUnlocked = PlayerPrefs.GetInt("levelsUnlocked", 0); // Get LevelsUnlocked
+
+		int numLevelsToDisplay = levelsUnlocked + 1;
+		if(numLevelsToDisplay > numLevels) {
+			numLevelsToDisplay = numLevels;
+		}
+		for(int level=1; level<=numLevelsToDisplay; level++) {
 			GameObject newLevel = Instantiate (LevelPrefab);
 			newLevel.transform.SetParent(GridOfLevels.transform);
-			newLevel.GetComponentsInChildren<Text> ()[0].text = "Level "+level;
+			newLevel.GetComponentsInChildren<Text> ()[0].text = "Level " + level;
 			newLevel.name = "Level" + level;
-			newLevel.GetComponent<Button> ().onClick.AddListener (delegate { // Add On Click Event
-				levelClicked(level);
+			int localLevel = level;
+			newLevel.GetComponent<Button>().onClick.AddListener (delegate { // Add On Click Event
+				levelClicked(localLevel);
 			});
 		}
 	}
@@ -34,8 +55,7 @@ public class LevelSelectionScript : MonoBehaviour {
 	}
 
 	public void levelClicked(int level) {
-		// TODO: Load Correct Level
-
+		GameControllerScript.currentLevel = level - 1;
 		SceneManager.LoadScene("GameScene");
 	}
 }

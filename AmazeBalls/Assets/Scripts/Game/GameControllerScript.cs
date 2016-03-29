@@ -11,8 +11,10 @@ using System.Collections;
 
 public class GameControllerScript : MonoBehaviour {
 	public static bool debugEnabled = false;
+	public static int currentLevel = 0;
 
 	public static GameControllerScript GameController;
+	public GameObject[] Levels;
 	public GameObject PauseButton;
 	public GameObject InGameMenu;
 	public GameObject FireMenu;
@@ -24,6 +26,19 @@ public class GameControllerScript : MonoBehaviour {
 		GameController = gameObject.GetComponent<GameControllerScript>();
 		InGameMenu.SetActive(false);
 		FireMenu.SetActive(false);
+
+		foreach(GameObject level in Levels) { // Disable All Levels
+			level.SetActive(false);
+		}
+		if(currentLevel >= Levels.Length) { // Invalid currentLevel
+			if(debugEnabled) {
+				Debug.Log("Level Does Not Exist: "+currentLevel);
+			}
+			SceneManager.LoadScene("HomeScene");
+			return;
+		}
+
+		Levels[currentLevel].SetActive(true);
 	}
 	
 	public void pauseClicked() {
@@ -31,6 +46,10 @@ public class GameControllerScript : MonoBehaviour {
 			ScoreField.text = "Score: " + PlayerController.currentBounceCount; // Update Score UI
 			ResultField.text = PlayerController.resultText;
 			InGameMenu.SetActive(true);
+			if(PlayerController.didWin) { // Change Restart button to "Next"
+				currentLevel++;
+				GameObject.Find("RestartText").GetComponent<Text>().text = "Next";
+			}
 		} else {
 			InGameMenu.SetActive(false);
 		}
@@ -41,6 +60,6 @@ public class GameControllerScript : MonoBehaviour {
 	}
 
 	public void homeClicked() {
-		SceneManager.LoadScene ("HomeScene");
+		SceneManager.LoadScene("HomeScene");
 	}
 }

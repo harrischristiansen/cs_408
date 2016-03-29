@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 	public float fireSpeed = 8000;
 	public bool movementEnabled = true;
 
-	public static int currentBounceCount = -1; // Score Keeping
+	public static int currentBounceCount = -1; // Score Keepingc
 	public static string resultText = "";
 	public static bool didWin = false;
 

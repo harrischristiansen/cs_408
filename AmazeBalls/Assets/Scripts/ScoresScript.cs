@@ -10,12 +10,12 @@ using System.Collections;
 
 public class ScoresScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	public void backClicked() {
+		SceneManager.LoadScene("HomeScene");
+	}
+
+	public void resetClicked() {
+		LevelSelectionScript.resetUnlocked();
 		SceneManager.LoadScene("HomeScene");
 	}
 }
