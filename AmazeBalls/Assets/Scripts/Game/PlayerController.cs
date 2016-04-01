@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour {
 		directionArrow.SetActive(true);
 		currentRotation = 0.0f;
 		playerRigidbody.MoveRotation(0.0f);
+		playerRigidbody.inertia = 0.0f;
 
 		// Increment Bounce Count
 		currentBounceCount++;
