@@ -5,6 +5,7 @@
 */
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -13,7 +14,9 @@ public class PlayerController : MonoBehaviour {
 	public float fireSpeed = 8000;
 	public bool movementEnabled = true;
 
-	public static int currentBounceCount = -1; // Score Keepingc
+	public static int currentBounceCount = -1; // Score Keeping
+	public int maxBounceCount = 50;
+
 	public static string resultText = "";
 	public static bool didWin = false;
 
@@ -71,6 +74,11 @@ public class PlayerController : MonoBehaviour {
 
 			// Increment Bounce Count
 			currentBounceCount++;
+
+			// Check Current Bounce Count, Restart Level if necessary
+			if(currentBounceCount > maxBounceCount) {
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			}
 		}
 	}
 
