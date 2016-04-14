@@ -13,6 +13,7 @@ public class LevelSelectionScript : MonoBehaviour {
 	public static int levelsUnlocked = 0;
 
 	public static void unlockLevel(int level) {
+		levelsUnlocked = PlayerPrefs.GetInt("levelsUnlocked", 0); // Make sure levelsUnlocked is up to date
 		level++; // 0 indexed to 1 indexed
 		if(levelsUnlocked < level) {
 			levelsUnlocked = level;
